@@ -5,7 +5,7 @@ const token = process.env.SLACK_TOKEN;
 const rtm = new RTMClient(token);
 rtm.start();
 
-rtm.on('message', (event) => {
+rtm.on('message', (message) => {
   if ( (message.subtype && message.subtype === 'bot_message') ||
        (!message.subtype && message.user === rtm.activeUserId) ) {
     return;
