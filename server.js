@@ -11,14 +11,20 @@ rtm.on('message', (message) => {
     return;
   }
   console.log(`(channel:${message.channel}) ${message.user} says: ${message.text}`);
+  console.log(message);
 });
 
+rtm.on('reaction_added', (event) => {
+  // Structure of `event`: <https://api.slack.com/events/reaction_added>
+  console.log(`Reaction from ${event.user}: ${event.reaction}`);
+});
+rtm.on('reaction_removed', (event) => {
+  // Structure of `event`: <https://api.slack.com/events/reaction_removed>
+  console.log(`Reaction removed by ${event.user}: ${event.reaction}`);
+});
 
-const conversationId = 'CA1B2S3AN';
-rtm.sendMessage('Hello there', conversationId)
-  .then((res) => {
-    // `res` contains information about the posted message
-    console.log('Message sent: ', res.ts);
-  })
-  .catch(console.error);
+rtm.on('ready', (event) => {
+  const conversationId = 'CA1B2S3AN';
+  rtm.sendMessage('Hello there', conversationId);
+});
 
