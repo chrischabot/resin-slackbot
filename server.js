@@ -1,16 +1,15 @@
-var express = require('express');
-var app = express();
+const { RTMClient } = require('@slack/client');
 
-// reply to request with "Hello World!"
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+const token = process.env.SLACK_TOKEN;
 
-//start a server on port 80 and log its start to our console
-var server = app.listen(80, function () {
+const rtm = new RTMClient(token);
+rtm.start();
 
-  var port = server.address().port;
-  console.log('Example app listening on port ', port);
+const conversationId = 'CA1B2S3AN';
 
-});
-
+rtm.sendMessage('Hello there', conversationId)
+  .then((res) => {
+    // `res` contains information about the posted message
+    console.log('Message sent: ', res.ts);
+  })
+  .catch(console.error);
