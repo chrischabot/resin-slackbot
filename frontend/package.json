@@ -1,0 +1,36 @@
+{
+  "name": "resin-slackbot",
+  "version": "0.0.1",
+  "description": "A simple slack bot on resin.io",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrischabot/resin-slackbot.git"
+  },
+  "keywords": [
+    "resin.io",
+    "slack",
+    "bot"
+  ],
+  "author": "Chris Chabot <chrisc@resin.io>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/chrischabot/resin-slackbot/issues"
+  },
+  "homepage": "https://github.com/chrischabot/resin-slackbot#readme",
+  "dependencies": {
+    "@aoberoi/passport-slack": "^1.0.5",
+    "@slack/client": "^4.2.0",
+    "@slack/events-api": "^1.0.1",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "*",
+    "node-usererror": "^1.0.2",
+    "npm": "^6.0.0",
+    "passport": "^0.4.0"
+  }
+}

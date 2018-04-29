@@ -1,0 +1,26 @@
+version: '2'
+services:
+  frontend:
+    build: ./frontend
+    expose:
+      - "80"
+  proxy:
+    build: ./haproxy
+    depends_on:
+      - frontend
+      - data
+    ports:
+      - "80:80"
+  data:
+    build: ./data
+    expose:
+      - "8080"
+   gpio:
+      build: ./gpio
+      devices:
+        - "/dev/i2c-1:/dev/i2c-1"
+        - "/dev/mem:/dev/mem"
+      cap_add: 
+        - SYS_RAWIO
+    privileged: true
+    restart: always
