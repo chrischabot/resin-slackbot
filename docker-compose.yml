@@ -15,12 +15,10 @@ services:
     build: ./data
     expose:
       - "8080"
-   gpio:
-      build: ./gpio
-      devices:
-        - "/dev/i2c-1:/dev/i2c-1"
-        - "/dev/mem:/dev/mem"
-      cap_add: 
-        - SYS_RAWIO
+    devices:
+      - "/dev/i2c-1:/dev/i2c-1"
+      - "/dev/mem:/dev/mem"
+    cap_add: 
+      - SYS_RAWIO
     privileged: true
     restart: always
