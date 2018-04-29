@@ -27,4 +27,3 @@ rtm.on('ready', (event) => {
   const conversationId = 'CA1B2S3AN';
   rtm.sendMessage('Hello there', conversationId);
 });
-
