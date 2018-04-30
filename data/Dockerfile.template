@@ -14,7 +14,7 @@ RUN git clone https://github.com/rupnikj/nodeimu && \
   npm install -g && \
   cd .. && rm -rf nodeimu
 
-# RUN cd /usr/src/app && npm install --production --unsafe-perm
+RUN cd /usr/src/app && npm install --production --unsafe-perm
 
 COPY . ./
 
