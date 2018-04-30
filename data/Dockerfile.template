@@ -13,10 +13,9 @@ RUN git clone https://github.com/rupnikj/nodeimu && \
   npm rm nan node-gyp && npm i nan node-gyp && \
   npm install -g && \
   echo "/usr/local/lib/node_modules/nodeimu:" && ls -l /usr/local/lib/node_modules/nodeimu && echo "/usr/local/lib/node_modules/" && ls -l /usr/local/lib/node_modules/ && \
-  cd .. && rm -rf nodeimu && \
-  npm link nodeimu
+  cd ..
 
-RUN cd /usr/src/app && npm install --production --unsafe-perm
+RUN cd /usr/src/app && npm link nodeimu && npm install --production --unsafe-perm
 
 RUN apt-get remove build-essential node-gyp git
 
