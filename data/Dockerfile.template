@@ -6,16 +6,11 @@ COPY package.json package.json
 RUN git clone https://github.com/rupnikj/nodeimu && \
   cd nodeimu && \
   git clone https://github.com/jeff-loughlin/RTIMULib2.git && \
-  npm rm nan node-gyp && npm i nan node-gyp && \
-  npm install && \
+  npm rm nan node-gyp && npm i nan node-gyp -g && \
+  npm install -g && \
   cd .. && rm -rf nodeimu
 
-RUN apk add --no-cache --virtual .gyp \
-        python \
-        make \
-        g++ \
-    && npm install --production --unsafe-perm \
-    && apk del .gyp
+RUN cd /usr/src/app && npm install --production --unsafe-perm
 
 COPY . ./
 
