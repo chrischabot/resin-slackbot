@@ -9,7 +9,7 @@ const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 var io = require('socket.io-client')
-var socket = io.connect('http://127.0.0.1', {reconnect: true});
+var socket = io.connect('http://192.168.0.227', {reconnect: true});
 
 var measure = {};
 
@@ -17,8 +17,8 @@ socket.on('connect', function(){
   console.log('connected to data backend')
 });
 
-socket.on('measure', function(measure){
-  console.log(measure)
+socket.on('measure', function(data){
+  measure = data
 });
 
 socket.on('disconnect', function(){
@@ -127,6 +127,6 @@ ${JSON.stringify(error.body)}`);
 
 // Start the express application
 const port = process.env.PORT || 3000;
-http.createServer(app).listen(port, () => {
+var server = http.createServer(app).listen(port, () => {
   console.log(`server listening on port ${port}`);
 });

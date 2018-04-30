@@ -14,16 +14,8 @@ let tic = new Date()
 
 server.listen(8080);
 
-/*function requestData(socket) {
-  setTimeout(() => {
-    tic = new Date()
-    IMU.getValue(getSensorsData, socket)
-  }, TIMEOUT - (new Date() - tic))
-}*/
-
 function getSensorsData(data) {
   const measure = createPayload(data)
-  console.log(measure)
   return measure
 }
 
@@ -41,7 +33,6 @@ io.on('connection', function(socket) {
   'use strict';
   console.log('a user connected');
   let dataLoop = setInterval(function() {
-    console.log('data loop')
     setTimeout(() => {
       tic = new Date()
       IMU.getValue((e, data) => {
@@ -52,7 +43,7 @@ io.on('connection', function(socket) {
         socket.emit('measure', measure)
       }, TIMEOUT - (new Date() - tic))
     })
-  }, 1000);
+  }, 2000);
 	socket.on('disconnect', function() {
       console.log('a user disconnected');
 			clearInterval(dataLoop);
