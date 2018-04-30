@@ -12,9 +12,10 @@ RUN git clone https://github.com/rupnikj/nodeimu && \
   git clone https://github.com/jeff-loughlin/RTIMULib2.git && \
   npm rm nan node-gyp && npm i nan node-gyp && \
   npm install -g && \
-  cd .. && rm -rf nodeimu
+  cd .. && rm -rf nodeimu && \
+  npm link nodeimu
 
-RUN cd /usr/src/app && npm link nodeimu && npm install --production --unsafe-perm
+RUN cd /usr/src/app && npm install --production --unsafe-perm
 
 RUN apt-get remove build-essential node-gyp git
 
