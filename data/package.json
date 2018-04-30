@@ -21,6 +21,8 @@
     "express": "^4.16.2",
     "socket.io": "^1.7.4",
     "sense-hat-led": "^1.0.1",
-    "sense-joystick": "0.0.2"
+    "sense-joystick": "0.0.2",
+    "nan": "^2.10.0",
+    "node-gyp": "^3.6.2"
   }
 }
