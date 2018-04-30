@@ -3,7 +3,7 @@ FROM resin/%%RESIN_MACHINE_NAME%%-alpine-node
 WORKDIR /usr/src/app
 
 COPY package.json package.json
-RUN git clone https://github.com/rupnikj/nodeimu && \
+RUN git clone https://github.com/rupnikj/nodeimu --recursive && \
   cd nodeimu && \
   npm rm nan node-gyp && npm i nan node-gyp && \
   npm install -g && \
