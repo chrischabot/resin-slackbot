@@ -12,6 +12,7 @@ RUN git clone https://github.com/rupnikj/nodeimu && \
   git clone https://github.com/jeff-loughlin/RTIMULib2.git && \
   npm rm nan node-gyp && npm i nan node-gyp && \
   npm install -g && \
+  ls /usr/local/lib/node_modules/nodeimu && ls /usr/local/lib/node_modules/ && \
   cd .. && rm -rf nodeimu && \
   npm link nodeimu
 
