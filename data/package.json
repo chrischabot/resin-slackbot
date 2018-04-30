@@ -19,6 +19,9 @@
   },
   "dependencies": {
     "express": "^4.16.2",
-    "socket.io": "^1.7.4"
+    "socket.io": "^1.7.4",
+    "nodeimu": "^2.1.9",
+    "sense-hat-led": "^1.0.1",
+    "sense-joystick": "0.0.2"
   }
 }
