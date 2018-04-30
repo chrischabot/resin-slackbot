@@ -8,7 +8,8 @@ const SlackStrategy = require('@aoberoi/passport-slack').default.Strategy;
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
-const socket = require('socket.io-client')('http://localhost');
+var io = require('socket.io-client')
+var socket = io.connect('http://localhost', {reconnect: true});
 
 var measure = {};
 

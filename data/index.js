@@ -42,6 +42,7 @@ io.on('connection', function(socket) {
   'use strict';
   console.log('a user connected');
   let dataLoop = setInterval(function() {
+    console.log('data loop')
     setTimeout(() => {
       tic = new Date()
       IMU.getValue((e, data) => {
