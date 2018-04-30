@@ -8,6 +8,21 @@ const SlackStrategy = require('@aoberoi/passport-slack').default.Strategy;
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
+const socket = require('socket.io-client')('http://localhost');
+
+var measure = {};
+
+socket.on('connect', function(){
+  console.log('connected to data backend')
+});
+
+socket.on('measure', function(measure){
+  console.log(measure)
+});
+
+socket.on('disconnect', function(){
+  console.log('disconnected from data backend')
+});
 
 // *** Initialize event adapter using verification token from environment variables ***
 const slackEvents = slackEventsApi.createSlackEventAdapter(process.env.SLACK_VERIFICATION_TOKEN, {
