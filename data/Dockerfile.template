@@ -1,16 +1,18 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-alpine-node
+FROM resin/%%RESIN_MACHINE_NAME%%-node
 
 WORKDIR /usr/src/app
 
+RUN apt-get update \
+	&& apt-get install -yq build-essential node-gyp git
+
 COPY package.json package.json
-RUN git clone https://github.com/rupnikj/nodeimu --recursive && \
+RUN git clone https://github.com/rupnikj/nodeimu && \
   cd nodeimu && \
+  rm -rf RTIMULib2 && \
+  git clone https://github.com/jeff-loughlin/RTIMULib2.git && \
   npm rm nan node-gyp && npm i nan node-gyp && \
   npm install -g && \
   cd .. && rm -rf nodeimu
-
-#  rm -rf RTIMULib2 && \
-#  git clone https://github.com/jeff-loughlin/RTIMULib2.git && \
 
 # RUN cd /usr/src/app && npm install --production --unsafe-perm
 
