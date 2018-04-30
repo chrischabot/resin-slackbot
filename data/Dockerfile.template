@@ -5,12 +5,13 @@ WORKDIR /usr/src/app
 COPY package.json package.json
 RUN git clone https://github.com/rupnikj/nodeimu && \
   cd nodeimu && \
+  rm -rf RTIMULib2 && \
   git clone https://github.com/jeff-loughlin/RTIMULib2.git && \
   npm rm nan node-gyp && npm i nan node-gyp && \
   npm install -g && \
   cd .. && rm -rf nodeimu
 
-RUN cd /usr/src/app && npm install --production --unsafe-perm
+# RUN cd /usr/src/app && npm install --production --unsafe-perm
 
 COPY . ./
 
