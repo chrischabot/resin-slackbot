@@ -9,7 +9,7 @@ const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 var io = require('socket.io-client')
-var socket = io.connect('http://localhost', {reconnect: true});
+var socket = io.connect('http://127.0.0.1', {reconnect: true});
 
 var measure = {};
 

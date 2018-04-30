@@ -24,7 +24,6 @@ server.listen(8080);
 function getSensorsData(data) {
   const measure = createPayload(data)
   console.log(measure)
-  console.log(socket)
   return measure
 }
 
